@@ -12,6 +12,7 @@ class PagesController < ApplicationController
     end
 
     @credit.each do |deposit|
+<<<<<<< HEAD
       if deposit.credit_type == "Аннуитетный"
         # sum = (deposit.sum + deposit.percent_sum) * (deposit.percent.to_f ** (1/deposit.end_date.month - deposit.start_date.month).to_i)
         coef = (deposit.percent * (1+deposit.percent)**(deposit.end_date.month - deposit.start_date.month))/(((1+deposit.percent)**(deposit.end_date.month - deposit.start_date.month)) - 1)
@@ -24,6 +25,11 @@ class PagesController < ApplicationController
         deposit.update(:percent_sum => sum)
       end
 
+=======
+      sum = (deposit.sum + deposit.percent_sum) * (deposit.percent.to_f / 36500.0)
+      sum += deposit.percent_sum
+      deposit.update(:percent_sum => sum)
+>>>>>>> fsdfds
     end
   end
 end

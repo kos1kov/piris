@@ -57,7 +57,11 @@ class CreditsController < ApplicationController
 
   def credit_params
     p params
+<<<<<<< HEAD
     params.require(:credit).permit(:credit_plan,:credit_type, :start_date, :end_date, :percent_sum, :percent, :typeOfCurrency, :user, :sum)
+=======
+    params.require(:credit).permit(:credit_plan, :start_date, :end_date, :percent_sum, :percent, :typeOfCurrency, :user, :sum)
+>>>>>>> fsdfds
   end
 
   def create_or_update_response
