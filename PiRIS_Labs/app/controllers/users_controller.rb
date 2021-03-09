@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   except: [:index, :show]
 
   def index
-    @heading = 'Все пользователи'
+    @heading = 'Пользователи'
     @user = User.order(:surname).all
   end
 

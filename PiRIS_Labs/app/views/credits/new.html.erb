@@ -13,11 +13,6 @@
     <%= f.select(:user, fio_array, {:class => 'form-control'}) %>
   </p>
   <p>
-    Кредитный план<br>
-    <% fio_array = @credit_plan.map { |user| [user.name] } %>
-    <%= f.select(:credit_plan, fio_array, {:class => 'form-control'}) %>
-  </p>
-  <p>
     Тип кредита<br>
     <%= f.select(:credit_type, raw('<option value="Аннуитетный">Аннуитетный</option>
         <option value="Дифференцированный">Дифференцированный</option>
