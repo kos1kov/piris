@@ -1,0 +1,11 @@
+<h1><%= @heading %></h1>
+<% @credits.each do |deposit| %>
+  <div class="alert alert-light">
+    <h3>кредитный план: <%= deposit.credit_plan %></h3>
+    <h3>кредитный тип: <%= deposit.credit_type %></h3>
+    <h3>владелец: <%= deposit.user %></h3>
+    <p>сумма: <%= deposit.sum.to_i %></p>
+    <p>проценты: <%= deposit.percent_sum.to_f.round(3) %></p>
+    <%= link_to 'Просмотреть кредит', credit_path(deposit), :class => 'btn btn-outline-primary' %>
+  </div>
+<% end %>

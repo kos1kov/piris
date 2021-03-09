@@ -1,0 +1,41 @@
+<p><%= @user.surname %></p>
+<p><%= @user.name %></p>
+<p><%= @user.secondname %></p>
+<p><%= @user.borndate %></p>
+<%= sex = "" %>
+<% if @user.sex then %>
+<% sex = "Мужчина" %>
+<% else %>
+<% sex = "Женщина" %>
+<% end %>
+<p><%= sex %></p>
+<p><%= @user.passportserial %></p>
+<p><%= @user.passportnum %></p>
+<p><%= @user.issuebody %></p>
+<p><%= @user.dateissue %></p>
+<p><%= @user.identnum %></p>
+<p><%= @user.bornissue %></p>
+<p><%= @user.factcity %></p>
+<p><%= @user.factadress %></p>
+<p><%= @user.homephone %></p>
+<p><%= @user.phone %></p>
+<p><%= @user.email %></p>
+<p><%= @user.regaddress %></p>
+<p><%= @user.materialstatus %></p>
+<p><%= @user.citizenship %></p>
+<p><%= @user.disability %></p>
+<%= pensioner = "" %>
+<% if @user.pensioner then %>
+<% pensioner = "Пенсионер" %>
+<% else %>
+<% pensioner = "Не пенсионер" %>
+<% end %>
+<p><%= pensioner %></p>
+<p><%= @user.monthincome %></p>
+<hr>
+<%= link_to 'Изменить пользователя', edit_user_path(@user), :class => 'btn btn-warning' %>
+<%= link_to 'Удалить пользователя', user_path(@user),
+method: :delete,
+data: {confirm: 'Вы уверены?'},
+:class => 'btn btn-danger' %>
+<hr>

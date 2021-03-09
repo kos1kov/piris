@@ -1,0 +1,15 @@
+<h3>кредитный план: <%= @credit.credit_plan %></h3>
+<h3>кредитный тип: <%= @credit.credit_type %></h3>
+<h3>владелец: <%= @credit.user %></h3>
+<p>сумма: <%= @credit.sum.to_i %></p>
+<p>сумма по процентам: <%= @credit.percent_sum.to_f.round(3) %></p>
+<p>проценты: <%= @credit.percent %></p>
+<p>начало: <%= @credit.start_date %></p>
+<p>конец: <%= @credit.end_date%></p>
+
+<hr>
+<%= link_to 'Закрыть кредит', credit_path(@credit),
+            method: :delete,
+            data: {confirm: 'Вы уверены?'},
+            :class => 'btn btn-danger' %>
+<hr>

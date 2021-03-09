@@ -1,0 +1,19 @@
+<p><%= @deposit.depositUser %></p>
+<p><%= @deposit.typeOfDeposit %></p>
+<p><%= @deposit.typeOfCurrency %></p>
+<p><%= @deposit.sumOfDeposit %></p>
+<p><%= @deposit.percent %></p>
+<p><%= @deposit.percentSum %></p>
+<hr>
+<% if(@deposit.typeOfDeposit == "Отзывной") %>
+  <%= button_to 'Снять проценты', deposit_path(@deposit),
+  method: :patch,
+  data: {confirm: 'Вы уверены?'},
+  :class => 'btn btn-warning' %>
+  <hr>
+<% end %>
+<%= link_to 'Закрыть депозит', deposit_path(@deposit),
+method: :delete,
+data: {confirm: 'Вы уверены?'},
+:class => 'btn btn-danger' %>
+<hr>

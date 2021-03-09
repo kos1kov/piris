@@ -1,0 +1,127 @@
+<h1><%= @heading %></h1>
+<p> </p>
+<%= form_for :user, url: users_path do |f| %>
+
+  <p>
+    Фамилия<br>
+    <%= f.text_field(:surname, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Имя<br>
+    <%= f.text_field(:name, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Отчество<br>
+    <%= f.text_field(:secondname, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Дата рождения<br>
+    <%= date1 = f.date_field :borndate, max: Date.today, :class => 'form-control' %>
+  </p>
+  <p>
+    Пол<br>
+    М<%= f.radio_button(:sex, "М", {:class => 'btn btn-success'}) %>
+    Ж<%= f.radio_button(:sex, "Ж", {:class => 'btn btn-success'}) %>
+  </p>
+  <p>
+    Серия паспорта<br>
+    <%= f.text_field(:passportserial, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    № паспорта<br>
+    <%= f.text_field(:passportnum, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Кем выдан<br>
+    <%= f.text_field(:issuebody, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Дата выдачи<br>
+    <%= date2 = f.date_field :dateissue, max: Date.today, :class => 'form-control' %>
+  </p>
+  <p>
+    Идентификационный номер<br>
+    <%= f.text_field(:identnum, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Место рождения<br>
+    <%= f.text_field(:bornissue, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Город фактического проживания<br>
+    <%= f.select(:factcity, raw('<option value="Брест">Брест</option>
+        <option value="Витебск">Витебск</option>
+        <option value="Гомель">Гомель</option>
+        <option value="Гродно">Гродно</option>
+        <option value="Минск">Минск</option>
+        <option value="Могилев">Могилев</option>
+      '), {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Адрес фактического проживания<br>
+    <%= f.text_field(:factadress, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Телефон домашний<br>
+    <%= f.text_field(:homephone, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Телефон мобильный<br>
+    <%= f.text_field(:phone, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Email<br>
+    <%= f.text_field(:email, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Адрес прописки<br>
+    <%= f.text_field(:regaddress, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Семейное положение<br>
+    <%= f.select(:materialstatus, raw('<option value="Не замужем(Не женат)">Не замужем(Не женат)</option>
+        <option value="Замужем(Женат)">Замужем(Женат)</option>
+        <option value="Разведен(а)">Разведен(а)</option>
+        <option value="Вдова(Вдовец)">Вдова(Вдовец)</option>
+      '), {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Гражданство<br>
+    <%= f.select(:citizenship, raw('<option value="Белорусское">Белорусское</option>
+        <option value="Русское">Русское</option>
+        <option value="Польское">Польское</option>
+        <option value="Литовское">Литовское</option>
+        <option value="Украинское">Украинское</option>
+        <option value="Латвийское">Латвийское</option>
+        <option value="Иное">Иное</option>
+      '), {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Инвалидность<br>
+    <%= f.select(:disability, raw('<option value="Нету">Нет</option>
+        <option value="1-ой степени">1-ой степени</option>
+        <option value="2-ой степени">2-ой степени</option>
+        <option value="3-ой степени">3-ой степени</option>
+        <option value="4-ой степени">4-ой степени</option>
+      '), {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Пенсионер<br>
+    <%= f.check_box(:pensioner, {:class => 'btn btn-success'}) %>
+  </p>
+  <p>
+    Ежемесячный доход<br>
+    <%= f.text_field(:monthincome, {:class => 'form-control'}) %>
+  </p>
+  <% if date2 < date1 %>
+  <% @user.errors.add(:dateissue, "Дата выдачи пасспорта не может быть меньше, чем дата рождения") %>
+  <% end %>
+  <% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |msg| %>
+      <div class="alert alert-danger"><%= msg %></div>
+    <% end %>
+  <% end %>
+  <p>
+    <%= f.submit({:class => 'btn btn-success'}) %>
+  </p>
+<% end %>

@@ -1,0 +1,8 @@
+<h1><%= @heading %></h1>
+<% @deposit.each do |deposit| %>
+  <div class="alert alert-light">
+    <h3><%= deposit.depositUser %></h3>
+    <p><%= deposit.sumOfDeposit.to_i %></p>
+    <%= link_to 'Просмотреть депозит', deposit_path(deposit), :class => 'btn btn-outline-primary' %>
+  </div>
+<% end %>

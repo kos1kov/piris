@@ -1,0 +1,55 @@
+<h3><%= @heading %></h3>
+<p> </p>
+<%= form_for :credit, url: credits_path do |f| %>
+  <% if @credit.errors.any? %>
+    <% @credit.errors.full_messages.each do |msg| %>
+      <div class="alert alert-danger"><%= msg %></div>
+    <% end %>
+    <% @user = User.order(:surname).all %>
+    <% @credit_plan = CreditPlan.order(:name).all %>
+  <% end %>
+  <p>
+    <% fio_array = @user.map { |user| [user.surname + ' ' + user.name + ' ' + user.secondname, user.surname + ' ' + user.name + ' ' + user.secondname] } %>
+    <%= f.select(:user, fio_array, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Кредитный план<br>
+    <% fio_array = @credit_plan.map { |user| [user.name] } %>
+    <%= f.select(:credit_plan, fio_array, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Тип кредита<br>
+    <%= f.select(:credit_type, raw('<option value="Аннуитетный">Аннуитетный</option>
+        <option value="Дифференцированный">Дифференцированный</option>
+      '), {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Валюта<br>
+    <%= f.select(:typeOfCurrency, raw('<option value="BYN">Белорусский рубль BYN</option>
+        <option value="RUB">Русский рубль RUB</option>
+        <option value="USD">Доллар $</option>
+        <option value="EUR">Евро €</option>
+      '), {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Дата начала<br>
+    <%= f.date_field :start_date, min: Date.today, :class => 'form-control' %>
+  </p>
+  <p>
+    Дата конца<br>
+    <%= f.date_field :end_date, min: Date.today, :class => 'form-control' %>
+  </p>
+
+  <p>
+    Сумма кредита<br>
+    <%= f.text_field(:sum, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Процент по кредиту<br>
+    <%= f.text_field(:percent, {:class => 'form-control'}) %>
+  </p>
+  <%= f.check_box(:percent_sum, {:class => 'd-none'}) %>
+  <p>
+    <%= f.submit({:class => 'btn btn-success'}) %>
+  </p>
+<% end %>
