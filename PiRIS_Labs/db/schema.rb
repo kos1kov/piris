@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_09_134552) do
+ActiveRecord::Schema.define(version: 2021_03_09_214230) do
+
+  create_table "cards", force: :cascade do |t|
+    t.string "number"
+    t.string "password"
+    t.integer "attempt", default: 0
+    t.integer "money"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.string "username"

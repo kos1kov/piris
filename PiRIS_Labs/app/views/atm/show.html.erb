@@ -1,0 +1,27 @@
+<h3>Номер карточки: <%= @card.number %></h3>
+<h3>Сумма на счёте: <%= @card.money %></h3>
+
+<%= form_for :card, url: atm_path, method: :patch do |f| %>
+    <h3>Снятие средств</h3>
+    <p>
+      <%= f.text_field(:money, {:class => 'form-control'}) %>
+    </p>
+    <p>
+      <%= f.submit({:class => 'btn btn-success'}) %>
+    </p>
+<% end %>
+
+<%= form_for :card, url: atm_path, method: :patch do |f| %>
+    <h3>Положить деньги на телефон</h3>
+    <p>
+      Tелефон<br>
+      <input></input>
+    </p>
+    <p>
+      Сумма<br>
+      <%= f.text_field(:money, {:class => 'form-control'}) %>
+    </p>
+    <p>
+      <%= f.submit({:class => 'btn btn-success'}) %>
+    </p>
+<% end %>
