@@ -6,6 +6,8 @@
 <p>проценты: <%= @credit.percent %></p>
 <p>начало: <%= @credit.start_date %></p>
 <p>конец: <%= @credit.end_date%></p>
+<p>статус: <%= if @credit.active
+                 "активный" else "закрыт" end %></p>
 
 <hr>
 <%= link_to 'Закрыть кредит', credit_path(@credit),

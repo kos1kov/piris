@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_09_134552) do
+ActiveRecord::Schema.define(version: 2021_03_09_175812) do
 
   create_table "comments", force: :cascade do |t|
     t.string "username"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2021_03_09_134552) do
     t.string "typeOfCurrency"
     t.string "credit_plan"
     t.string "user"
+    t.boolean "active"
     t.index ["credit_plan_id"], name: "index_credits_on_credit_plan_id"
     t.index ["user_id"], name: "index_credits_on_user_id"
   end

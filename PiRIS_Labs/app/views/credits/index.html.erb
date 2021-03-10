@@ -6,6 +6,8 @@
     <h3>владелец: <%= deposit.user %></h3>
     <p>сумма: <%= deposit.sum.to_i %></p>
     <p>проценты: <%= deposit.percent_sum.to_f.round(3) %></p>
+    <p>статус: <%= if deposit.active
+                     "активный" else "закрыт" end %></p>
     <%= link_to 'Просмотреть кредит', credit_path(deposit), :class => 'btn btn-outline-primary' %>
   </div>
 <% end %>

@@ -4,7 +4,8 @@ class CreditsController < ApplicationController
   # GET /credits
   def index
     @heading = 'Все кредиты'
-    @credits = Credit.all
+    @credits = Credit.where(active: true)
+    @credits += Credit.where(active: false)
   end
 
   # GET /credits/1
@@ -28,7 +29,7 @@ class CreditsController < ApplicationController
 
   # DELETE /credits/1
   def destroy
-    @credit.destroy
+    @credit.update(active: false)
     redirect_to credits_path
 
   rescue ActiveRecord::InvalidForeignKey => e
