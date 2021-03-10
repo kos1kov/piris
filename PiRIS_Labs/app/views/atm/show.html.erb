@@ -25,3 +25,8 @@
       <%= f.submit({:class => 'btn btn-success'}) %>
     </p>
 <% end %>
+<%= link_to 'Удалить карточку', atm_path(@card),
+            method: :delete,
+            data: {confirm: 'Вы уверены?'},
+            :class => 'btn btn-danger' %>
+<hr>

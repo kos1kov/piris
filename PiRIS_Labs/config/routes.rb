@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'users#index', as: 'home'
 
   get 'about' => 'pages#about', as: 'about'
+  post 'login' => 'atm#login', as: 'login'
   # get 'newdeposit' => 'deposit#new', as: 'newdeposit'
   # patch 'closeBankDay' => 'deposits#index', as: 'closeBankDay'
 

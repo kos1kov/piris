@@ -1,8 +1,19 @@
 <% @cards.each do |card| %>
   <div class="alert alert-light">
-    <h3>кредитный план: <%= card.number %></h3>
-    <h3>кредитный тип: <%= card.password %></h3>
-    <h3>владелец: <%= card.attempt %></h3>
-    <h3>владелец: <%= card.money %></h3>
+    <h3><%= card.number %></h3>
+    <h3><%= card.attempt %></h3>
   </div>
+<% end %>
+<%= form_for :card, url: login_path, method: :post do |f| %>
+  <p>
+    Номер карточки<br>
+    <%= f.text_field(:number, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Пин-код<br>
+    <%= f.text_field(:password, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    <%= f.submit({:class => 'btn btn-success'}) %>
+  </p>
 <% end %>
