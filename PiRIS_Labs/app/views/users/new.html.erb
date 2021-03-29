@@ -1,7 +1,11 @@
 <h1><%= @heading %></h1>
 <p> </p>
 <%= form_for :user, url: users_path do |f| %>
-
+  <% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |msg| %>
+      <div class="alert alert-danger"><%= msg %></div>
+    <% end %>
+  <% end %>
   <p>
     Фамилия<br>
     <%= f.text_field(:surname, {:class => 'form-control'}) %>
@@ -116,11 +120,7 @@
   <% if date2 < date1 %>
   <% @user.errors.add(:dateissue, "Дата выдачи пасспорта не может быть меньше, чем дата рождения") %>
   <% end %>
-  <% if @user.errors.any? %>
-    <% @user.errors.full_messages.each do |msg| %>
-      <div class="alert alert-danger"><%= msg %></div>
-    <% end %>
-  <% end %>
+  
   <p>
     <%= f.submit({:class => 'btn btn-success'}) %>
   </p>

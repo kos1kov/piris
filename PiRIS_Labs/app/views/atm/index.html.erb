@@ -1,0 +1,23 @@
+
+<% @cards.each do |card| %>
+  <div class="alert alert-light">
+    <h3 ><% card.number %></h3>
+    <h3 ><% card.attempt %></h3>
+  </div>
+<% end %>
+<% if params[:message].present? %>
+   <h3><%=params[:message] %></h3>
+<%end %>
+<%= form_for :card, url: login_path, method: :post do |f| %>
+  <p>
+    Номер карточки<br>
+    <%= f.text_field(:number, {:class => 'form-control', :required => true}) %>
+  </p>
+  <p>
+    Пин-код<br>
+    <%= f.text_field(:password, {:class => 'form-control', :required => true}) %>
+  </p>
+  <p>
+    <%= f.submit("Войти", {:class => 'btn btn-success'}) %>
+  </p>
+<% end %>

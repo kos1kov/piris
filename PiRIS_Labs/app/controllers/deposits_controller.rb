@@ -1,7 +1,7 @@
 class DepositsController < ApplicationController
 
   def index
-    @heading = 'Все депозиты'
+    @heading = 'Депозиты'
     @deposit = Deposit.order(:depositUser).all
   end
 

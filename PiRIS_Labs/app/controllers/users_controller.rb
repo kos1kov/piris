@@ -1,9 +1,7 @@
 class UsersController < ApplicationController
-  http_basic_authenticate_with name: 'admin', password: '12345',
-  except: [:index, :show]
 
   def index
-    @heading = 'Все пользователи'
+    @heading = 'Пользователи'
     @user = User.order(:surname).all
   end
 

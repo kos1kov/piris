@@ -1,0 +1,18 @@
+<p> </p>
+<%= form_for :card, url: atm_index_path do |f| %>
+  <p>
+    Номер карточки<br>
+    <%= f.text_field(:number, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Сумма на счёте<br>
+    <%= f.text_field(:money, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    Пин-код<br>
+    <%= f.text_field(:password, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    <%= f.submit({:class => 'btn btn-success'}) %>
+  </p>
+<% end %>
